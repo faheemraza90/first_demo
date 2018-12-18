@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <import type="android.text.TextUtils" />
+
+        <variable
+            name="isLoading"
+            type="boolean" />
+
+        <variable
+            name="projectDetail"
+            type="com.faheem.mvvmdemopractice.viewmodel.ProjectDetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/loading_project"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/msg_loading_project_detail"
+            android:visibility="@{isLoading ? View.VISIBLE : View.GONE}" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp"
+            android:paddingTop="16dp"
+            android:visibility="@{isLoading ? View.GONE : View.VISIBLE}">
+
+            <ImageView
+                android:id="@+id/imgProjectImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@mipmap/ic_launcher" />
+
+            <TextView
+                android:id="@+id/name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:text="@{projectDetail.project.name}"
+                android:textSize="25sp" />
+
+            <TextView
+                android:id="@+id/project_desc"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{projectDetail.project.description}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/project_lang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{projectDetail.project.language}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/project_watchers"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(projectDetail.project.watchers)}"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/project_issues"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@{String.valueOf(projectDetail.project.openIssues)}"
+                android:textSize="16sp" />
+
+        </LinearLayout>
+    </LinearLayout>
+</layout>
